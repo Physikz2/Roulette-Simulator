@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --t-canvas: #0B1120;
+  --t-surface: #131C31;
+  --t-subtle: #1D2945;
+  --t-input: #0F172A;
+  --t-border: #2B3B5E;
+  --t-border-soft: #1E2A47;
+  --t-text: #F8FAFC;
+  --t-muted: #CBD5E1;
+  --t-dim: #94A3B8;
+  --t-accent: #F59E0B;
+  --t-accent-hover: #FBBF24;
+  --t-accent-fg: #0F172A;
+  --t-profit-bg: rgba(16, 185, 129, 0.15);
+  --t-profit-border: rgba(52, 211, 153, 0.4);
+  --t-profit-text: #34D399;
+  --t-loss-bg: rgba(239, 68, 68, 0.15);
+  --t-loss-border: rgba(248, 113, 113, 0.4);
+  --t-loss-text: #F87171;
+  --t-header-bg: rgba(19, 28, 49, 0.94);
+  --t-glow: 0 0 24px rgba(245, 158, 11, 0.1);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--t-canvas);
+    color: var(--t-text);
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Range slider accent tracks active theme */
+input[type="range"] {
+  accent-color: var(--t-accent);
+}
+
+/* Marquee flashing lights for the profit/loss hero callout */
+@keyframes marquee-bulb-even {
+  0%, 49% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  50%, 100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes marquee-bulb-odd {
+  0%, 49% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50%, 100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes marquee-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px var(--flash-color), 0 0 28px var(--flash-glow);
+  }
+  50% {
+    box-shadow: 0 0 24px var(--flash-color), 0 0 46px var(--flash-glow);
+  }
+}
+
+.marquee-callout {
+  animation: marquee-glow-pulse 0.9s ease-in-out infinite;
+}
+
+.marquee-bulb-even {
+  animation: marquee-bulb-even 0.7s steps(1, end) infinite;
+}
+
+.marquee-bulb-odd {
+  animation: marquee-bulb-odd 0.7s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-callout,
+  .marquee-bulb-even,
+  .marquee-bulb-odd {
+    animation: none;
+  }
+}

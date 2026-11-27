@@ -1,0 +1,6 @@
+{
+  "name": "Monte Carlo Roulette Simulator",
+  "description": "High-performance Monte Carlo roulette simulation engine visualizing short-term variance versus the Law of Large Numbers across multi-table betting strategies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
