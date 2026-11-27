@@ -6,6 +6,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/Roulette-Simulator/', // <--- ADD THIS LINE
     plugins: [
       react(),
       tailwindcss(),
